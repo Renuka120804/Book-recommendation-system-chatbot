@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>READWISE | Your Personal Book Guide</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fffdf8;
+      color: #333;
+    }
+
+    nav {
+      background: #ffffff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+      color: #4a148c;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #6a1b9a;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 40px;
+      background-color: #fff3e6;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .hero-text h1 {
+      font-size: 2.8rem;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .hero-text button {
+      padding: 12px 28px;
+      background-color: #6a1b9a;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .hero-text button:hover {
+      background-color: #4a148c;
+    }
+
+    /* Book Section */
+    .book-section {
+      padding: 40px;
+      background-color: #fffdf8;
+    }
+
+    .book-section h2 {
+      font-size: 2rem;
+      margin-bottom: 25px;
+      color: #4a148c;
+    }
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    .book-card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .book-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .book-card h4 {
+      font-size: 1rem;
+      margin: 5px 0;
+      color: #333;
+    }
+
+    .chat-button {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #6a1b9a;
+      color: white;
+      padding: 14px 22px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 999;
+      transition: background 0.3s ease;
+    }
+
+    .chat-button:hover {
+      background-color: #4a148c;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+
+      .chat-button {
+        right: 15px;
+        bottom: 15px;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">📖 READWISE</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Genres</a></li>
+      <li><a href="#">Authors</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Find Books That Truly Resonate With You</h1>
+      <p>Chat with Bookie and get personalized book picks based on your mood, genre, and interests.</p>
+      <button onclick="startChat()">Start Exploring</button>
+    </div>
+  </section>
+
+  <!-- Book Recommendation Section -->
+  <section class="book-section">
+    <h2>Recommended for You</h2>
+    <div class="book-grid">
+      <div class="book-card">
+        <img src="images/alchemist.jpg" alt="The Alchemist">
+        <h4>The Alchemist</h4>
+      </div>
+      <div class="book-card">
+        <img src="images/atomic_habits.jpg" alt="Atomic Habits">
+        <h4>Atomic Habits</h4>
+      </div>
+      <div class="book-card">
+        <img src="images/it_ends_with_us.jpg" alt="It Ends With Us">
+        <h4>It Ends With Us</h4>
+      </div>
+      <div class="book-card">
+        <img src="images/ikigai.jpg" alt="Ikigai">
+        <h4>Ikigai</h4>
+      </div>
+      <div class="book-card">
+        <img src="images/subconscious_mind.jpg" alt="The Power of Your Subconscious Mind">
+        <h4>The Power of Your Subconscious Mind</h4>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- IBM Watson Assistant Script -->
+  <script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "64b279e5-787e-4bd6-a5a9-10cd5c3618fe", // The ID of this integration.
+    region: "au-syd", // The region your integration is hosted in.
+    serviceInstanceID: "206e1d03-c607-442c-ae19-e8fb48e50b73", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
+
+</body>
+</html>
